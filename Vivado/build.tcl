@@ -5,15 +5,15 @@
 
 # Check the version of Vivado used
 set version_required "2018.2"
-set ver [lindex [split $::env(XILINX_VIVADO) /] 3]
-if {![string equal $ver $version_required]} {
+set vivado_dir $::env(XILINX_VIVADO)
+if {[string first $version_required $vivado_dir] == -1} {
   puts "###############################"
   puts "### Failed to build project ###"
   puts "###############################"
   puts "This project was designed for use with Vivado $version_required."
-  puts "You are using Vivado $ver. Please install Vivado $version_required,"
-  puts "or download the project sources from a commit of the Git repository"
-  puts "that was intended for your version of Vivado ($ver)."
+  puts "Please install Vivado $version_required, or download the project"
+  puts "sources from a commit of the Git repository that was intended for"
+  puts "your version of Vivado."
   return
 }
 
