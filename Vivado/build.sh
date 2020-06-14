@@ -2,7 +2,14 @@
 export VIVADO=/home/lsa/xilinx/2018.2/Vivado/2018.2/bin/vivado
 
 if [ -f $VIVADO ]; then
-    $VIVADO -mode batch -source build.tcl
+  echo "###################################"
+  echo "### Creating the Vivado Project ###"
+  echo "###################################"
+  $VIVADO -mode batch -source build.tcl
+  echo "#########################"
+  echo "### Exporting to SDK  ###"
+  echo "#########################"
+  $VIVADO build_bitstream_export_sdk.tcl
 elif [ -f ~/.bash_aliases ]; then
   echo ""
   echo "###############################"
