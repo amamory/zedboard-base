@@ -9,7 +9,7 @@ if [ -f $VIVADO ]; then
   echo "#########################"
   echo "### Exporting to SDK  ###"
   echo "#########################"
-  $VIVADO build_bitstream_export_sdk.tcl
+  $VIVADO mode batch -source build_bitstream_export_sdk.tcl
 elif [ -f ~/.bash_aliases ]; then
   echo ""
   echo "###############################"
