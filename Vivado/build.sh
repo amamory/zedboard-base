@@ -1,5 +1,6 @@
 #export VIVADO=/opt/Xilinx/Vivado/2018.2/bin/vivado
 export VIVADO=/home/lsa/xilinx/2018.2/Vivado/2018.2/bin/vivado
+export VIVADO_DESIGN_NAME=zedboard_base
 
 if [ -f $VIVADO ]; then
   echo "###################################"
@@ -14,6 +15,11 @@ if [ -f $VIVADO ]; then
   echo "### Compiling w SDK  ###"
   echo "#########################"
   xsct sdk.tcl
+  echo "####################################"
+  echo "### End of software compilation  ###"
+  echo "####################################"
+  echo "execute the following command to launch SDK GUI"
+  echo "xsdk -workspace ${VIVADO_DESIGN_NAME}/${VIVADO_DESIGN_NAME}.sdk/ -hwspec ${VIVADO_DESIGN_NAME}/${VIVADO_DESIGN_NAME}.sdk/${VIVADO_DESIGN_NAME}_wrapper.hdf"
 elif [ -f ~/.bash_aliases ]; then
   echo ""
   echo "###############################"

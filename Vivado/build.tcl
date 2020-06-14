@@ -17,7 +17,12 @@ if {[string first $version_required $vivado_dir] == -1} {
   return
 }
 
-set design_name zedboard_base
+if { ![info exists env(VIVADO_DESIGN_NAME)] } {
+    puts "Please set the environment variable VIVADO_DESIGN_NAME before running the script"
+    return
+}
+set design_name $::env(VIVADO_DESIGN_NAME)
+puts "Using design name: ${design_name}"
 
 # Set the reference directory for source file relative paths (by default the value is script directory path)
 set origin_dir "."

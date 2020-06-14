@@ -1,5 +1,9 @@
-# update the design name 
-set design_name zedboard_base
+if { ![info exists env(VIVADO_DESIGN_NAME)] } {
+    puts "Please set the environment variable VIVADO_DESIGN_NAME before running the script"
+    return
+}
+set design_name $::env(VIVADO_DESIGN_NAME)
+puts "Using design name: ${design_name}"
 
 #file mkdir ./$design_name/$design_name.sdk
 #file copy -force ./$design_name/zedboard_base.runs/impl_1/zedboard_base_wrapper.sysdef ./$design_name/zedboard_base.sdk/zedboard_base_wrapper.hdf
@@ -7,7 +11,7 @@ set design_name zedboard_base
 #launch_sdk -workspace ./$design_name/zedboard_base.sdk -hwspec ./$design_name/zedboard_base.sdk/zedboard_base_wrapper.hdf
 
 # Set SDK workspace
-#setws /tmp/workspace
+setws ./$design_name/$design_name.sdk
 # Create a HW project
 createhw -name hw1 -hwspec ./$design_name/$design_name.sdk/${design_name}_wrapper.hdf
 # Create a BSP project

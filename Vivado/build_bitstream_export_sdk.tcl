@@ -1,5 +1,9 @@
-# update the design name 
-set design_name zedboard_base
+if { ![info exists env(VIVADO_DESIGN_NAME)] } {
+    puts "Please set the environment variable VIVADO_DESIGN_NAME before running the script"
+    return
+}
+set design_name $::env(VIVADO_DESIGN_NAME)
+puts "Using design name: ${design_name}"
 
 # generate bitstream
 #set project_file [glob -directory . *.xpr]
